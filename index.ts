@@ -1,12 +1,15 @@
 import express, { Application, Express, Request, Response } from "express";
 import { getCoinMarketCapData } from "./services/coinmarketcap";
+import dotenv from "dotenv";
 
 const app: Application = express();
 
+dotenv.config();
+
 app.get("/", async (req: Request, res: Response) => {
   try {
-    const data = await getCoinMarketCapData("cryptocurrency/listings/latest");
-    res.send(data.data);
+    const data = await getCoinMarketCapData("cryptocurrency/map");
+    res.send(data);
   } catch (e) {
     res.send("Error fetching data");
   }
