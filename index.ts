@@ -8,7 +8,7 @@ dotenv.config();
 
 app.get("/", async (req: Request, res: Response) => {
   try {
-    const data = await getCoinMarketCapData("cryptocurrency/map");
+    const data = await getCoinMarketCapData("cryptocurrency/listings/latest");
     res.send(data);
   } catch (e) {
     res.send("Error fetching data");
